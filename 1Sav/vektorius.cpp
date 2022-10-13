@@ -1,7 +1,9 @@
 ﻿#include <iostream>
 #include <iomanip>
 #include <string>
+#include <vector>
 #include <math.h>
+#include <numeric>
 
 using namespace std;
 
@@ -25,21 +27,22 @@ public:
 		cin >> nd_kiekis;
 	}
 	void masyvas_ir_vidurkis() {
-		int* paz_masyvas = new int[nd_kiekis];
+		vector<int>nd;
+		int paz = 0;
 		double suma = 0;
-		for (int i = 0; i < nd_kiekis; i++)
+		for (int i = 1; i <= nd_kiekis; i++)
 		{
-			cout << "Iveskite pazymi" << endl;
-			cin >> paz_masyvas[i];
-			suma += paz_masyvas[i];
+			cin >> paz;
+			nd.push_back(paz);
 		}
+		suma = accumulate(nd.begin(), nd.end(), 0);
 		vidurkis = suma / (double)nd_kiekis;
-		delete[] paz_masyvas;
+
 	}
 	void isvedimas() {
 		cout << left << setw(15) << "Pavardė" << "|" << left << setw(15) << "Vardas" << "|" << left << setw(15) << "Galutinis (Vid.)" << endl;
-		cout <<"____________________________________________________" << endl;
-		cout <<setw(15) << pavarde << "|" << left << setw(15) << vardas <<"|"<< left << setw(15) << 0.4*vidurkis+0.6*egz << endl;
+		cout << "____________________________________________________" << endl;
+		cout << setw(15) << pavarde << "|" << left << setw(15) << vardas << "|" << left << setw(15) << 0.4 * vidurkis + 0.6 * egz << endl;
 	}
 	double galutinis() {
 		return 0;
